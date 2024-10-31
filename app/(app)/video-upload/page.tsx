@@ -36,7 +36,7 @@ export default function VideoUpload(){
                 alert('file uploaded')
             }
         }catch(e){
-            console.log('Unable to upload')
+            console.log(`Error:${e}`)
         }finally{
             setIsUploading(false)
         }

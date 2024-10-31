@@ -14,10 +14,10 @@ cloudinary.config({
 });
 
 interface CloudinaryUploadResult{
-      public_id:string;
-      bytes:number;
-      duration?:number;
-      [key:string]:any;
+      public_id:string
+      bytes:number
+      duration?:number
+      [key:string]:any
 }
 
 export async function POST(request:NextRequest) {
@@ -50,10 +50,14 @@ export async function POST(request:NextRequest) {
                 
                 },
                     
-                (error,result)=>{
-             error? reject(error):resolve(result as CloudinaryUploadResult)
-
+                (error, result) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(result as CloudinaryUploadResult);
+                    }
                 }
+                
                 
 
             )
@@ -74,13 +78,12 @@ export async function POST(request:NextRequest) {
             }
         })
 
-        return NextResponse.json({publicId:result.public_id},{status:200})
-         
-
+        return NextResponse.json(video)
 
         
 
-    }catch(error){
+    }catch(e){
+        console.log(e)
          return NextResponse.json({error:"error "},{status:500})
     }finally{
         await prisma.$disconnect()

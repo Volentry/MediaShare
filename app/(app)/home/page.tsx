@@ -31,9 +31,10 @@ export default function Home(){
                     throw new Error("unexpected error")
                  }
 
-           }catch(e){
-            console.log(`error ${e}`)
-           }finally{
+           }catch(e) {
+            console.log(`Error: ${e}`);
+        }
+        finally{
             setLoading(false)
            }
     },[])

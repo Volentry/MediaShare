@@ -15,6 +15,7 @@ export async function GET(request:NextRequest) {
         return NextResponse.json(videos)
 
     }catch(e){
+        console.log(e)
         return NextResponse.json(["coundlt fetch the videos"],{status:500})
     }finally{
         prisma.$disconnect();

@@ -40,6 +40,7 @@ export default function Social(){
           setUploadedImage(data.public_Id);
         }catch(e){
             alert("Failed to upload image");
+            console.log(`${e}`)
              
         }finally{
             setIsUploading(false);

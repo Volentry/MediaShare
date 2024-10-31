@@ -11,7 +11,7 @@ cloudinary.config({
 });
 
 interface CloudinaryUploadResult{
-      public_id:string;
+      public_id:string
       [key:string]:any;
 }
 
@@ -37,10 +37,14 @@ export async function POST(request:NextRequest) {
 
             const uploadstream = cloudinary.uploader.upload_stream(
                 {folder:'editor-cloudinary-next'},
-                (error,result)=>{
-             error? reject(error):resolve(result as CloudinaryUploadResult)
-
+                (error, result) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(result as CloudinaryUploadResult);
+                    }
                 }
+                
                 
 
             )
@@ -56,7 +60,7 @@ export async function POST(request:NextRequest) {
 
         
 
-    }catch(error){
-         return NextResponse.json({error:"error "},{status:500})
+    }catch(e){
+         return NextResponse.json({error:{e}},{status:500})
     }
 }
