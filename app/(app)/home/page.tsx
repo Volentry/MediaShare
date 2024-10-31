@@ -32,7 +32,7 @@ export default function Home(){
                  }
 
            }catch(e){
-            console.log('error')
+            console.log(`error ${e}`)
            }finally{
             setLoading(false)
            }
