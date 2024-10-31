@@ -3,8 +3,7 @@
 import React,{useEffect,useState,useCallback} from "react"
 import axios from "axios"
 import VideoCard from "@/components/VideoCard"
-import { fetchExternalImage } from "next/dist/server/image-optimizer"
-import { error } from "console"
+
 
 interface Video{
   id: string 
